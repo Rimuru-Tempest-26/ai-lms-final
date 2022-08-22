@@ -42,7 +42,7 @@ public class UserService implements UserDetailsService {
 
             var teacher = new User();
             teacher.setLoginId("TCH001");
-            teacher.setName("");
+            teacher.setName("May Zwei");
             teacher.setEmail("admin@gmail.com");
             teacher.setPassword(passwordEncoder.encode("teacher"));
             teacher.setRole(User.Role.Teacher);
