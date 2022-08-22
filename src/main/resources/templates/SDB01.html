@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{layouts/LYU01 ::layout(~{::main})}" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+
+<main role="main">
+    <header th:fragment="navigation">
+        <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm bg-light fixed-top">
+
+            <a href="dashboard.html" class="navbar-brand mx-4">
+                <img src="https://aceinspiration.com/wp-content/themes/acinspiration/images/logo.PNG" alt="brand-logo"
+                     width="170px">
+            </a>
+
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><i
+                    class="navbar-toggler-icon"></i></button>
+
+            <div class="navbar-collapse collapse justify-content-between" id="nav">
+                <ul class="navbar-nav px-3">
+                    <li class="nav-item"><a th:href="@{/home}" class="nav-link text-uppercase">dashboard</a>
+                    </li>
+                    <li class="nav-item"><a href="course.html" class="nav-link text-uppercase">video</a>
+                    </li>
+                    <li class="nav-item"><a href="people.html" class="nav-link text-uppercase">participants</a>
+                    </li>
+                    <li class="nav-item"><a href="chat.html" class="nav-link text-uppercase">Chat</a>
+                    </li>
+                </ul>
+                <div sec:authorize="isAuthenticated()">
+                    <a href="javascript: document.logoutForm.submit()" class="me-2 btn btn-outline-danger btn-sm">Log Out</a>
+                    <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+                        <input hidden type="submit" value="Sign Out">
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div th:replace="fragments/SDB01 ::student-dashboards"></div>
+</main>
+</body>
+</html>

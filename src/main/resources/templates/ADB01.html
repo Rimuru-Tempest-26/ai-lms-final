@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{layouts/LYU01 ::layout(~{::main})}" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<main role="main">
+    <header th:fragment="navigation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="admin-dashboard.html"><img
+                        src="https://aceinspiration.com/wp-content/themes/acinspiration/images/logo.PNG" alt=""
+                        width="160px"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <h5 class="role" style="color: lightslategray;">ADMIN</h5>
+                <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+                    <div class="menu">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="admin-dashboard.html">Dashboard</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                   data-bs-toggle="dropdown">
+                                    Register
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="coursecreate.html">Course Register</a></li>
+                                    <li><a class="dropdown-item" href="teachercreate.html">Teacher Register</a></li>
+                                </ul>
+                            </li>
+
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="batchview.html">Batch Management</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a class="nav-link me-5 " href="#" data-bs-toggle="dropdown">
+                            <img src="./img/default-profile.png"
+                                 class="rounded-circle cricles" width="40px" alt="">
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+                            <li><a class="dropdown-item" href="adminlogin.html">Log Out</a></li>
+                        </ul>
+                        <div sec:authorize="isAuthenticated()">
+                            <a href="javascript: document.logoutForm.submit()" class="me-2 btn btn-outline-danger btn-sm">Log Out</a>
+                            <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+                                <input hidden type="submit" value="Sign Out">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div th:replace="fragments/ADB01 ::dashboard"></div>
+</main>
+</body>
+</html>

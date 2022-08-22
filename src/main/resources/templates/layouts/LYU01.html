@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="en" th:fragment="layout(content)" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/HED01 :: head"></head>
+<body>
+<div class="container-fluid">
+    <main th:replace="${content}"></main>
+</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./libs/fontawesomepro/css/all.min.css">
+    <style>
+        .cardhovers {
+            transition: transform 0.2s;
+        }
+
+        .cardhovers:hover {
+            transform: translateX(5px);
+        }
+
+        .alerts {
+            transition: transform 0.2s;
+        }
+
+        .alerts:hover {
+            transform: translateY(3px);
+        }
+    </style>
+</head>
+
+<body style="height: 100vh;overflow: hidden; font-family: 'Roboto Slab', serif;">
+<section>
+    <div class="container text-capitalize py-5">
+        <div class="row gx-2 justify-content-center align-items-center" style="height: 80vh; overflow: hidden;">
+            <div class="col-md-4 col-sm-12">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <p class="text-center fs-4 mb-0 py-2">student login</p>
+                    </div>
+                    <div th:if="${loginError}" class="alert alert-danger" role="alert">
+                        <h6>Wrong Username or Password</h6>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/login}" method="post">
+                            <div class="form-group mb-3">
+                                <label class="form-label" for="studentId">Student ID</label>
+                                <input type="text" name="username" id="studentId" class="form-control" placeholder="Enter Student ID" >
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label" for="password">Password</label>
+                                <input type="password" id="password" name="password" class="form-control"
+                                       placeholder="Enter password" />
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="form-check mb-0">
+                                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3"/>
+                                    <label class="form-check-label" for="form2Example3">
+                                        Remember me
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="btn-group mt-3">
+                                <button type="submit" class="btn btn-primary btn-sm">Sign In</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
