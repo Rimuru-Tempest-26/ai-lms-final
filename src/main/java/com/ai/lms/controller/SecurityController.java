@@ -1,18 +1,16 @@
 package com.ai.lms.controller;
 
 import com.ai.lms.entities.User;
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class LoginController {
+public class SecurityController {
 
 
-    @GetMapping("/login")
+    @GetMapping({"/", "login"})
     public String login(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if(auth!=null && auth.getAuthorities().stream().anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals(User.Role.Admin.name()))){
